@@ -1,0 +1,54 @@
+@import './tokens.css';
+@import './reset.css';
+@import './assets/fonts/fonts.css';
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.15;
+}
+
+/* Accessibility focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--space-2xl);
+    padding-right: var(--space-2xl);
+  }
+}

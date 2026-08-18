@@ -1,0 +1,134 @@
+.section {
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.header {
+  margin-bottom: var(--space-3xl);
+  max-width: 680px;
+}
+
+.tag {
+  display: block;
+  font-size: var(--text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.title {
+  font-size: var(--text-h2);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.01em;
+}
+
+.subline {
+  font-size: var(--text-body-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+
+.craftGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.craftCard {
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+
+  /* Scroll reveal */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+:global(.is-revealed) .craftCard {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms ease var(--reveal-delay, 0ms),
+              transform 500ms ease var(--reveal-delay, 0ms),
+              border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.craftCard:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 24px var(--color-shadow);
+  transform: translateY(-3px);
+}
+
+.cardAccentLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--color-accent);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-sm);
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.materialTag {
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.regionTag {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+}
+
+.traditionTitle {
+  font-size: 22px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  line-height: 1.25;
+}
+
+.narrativeText {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  flex: 1;
+}
+
+@media (max-width: 991px) {
+  .craftGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .craftCard {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .craftCard:hover {
+    transform: none !important;
+  }
+}

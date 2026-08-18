@@ -1,0 +1,8 @@
+.appRoot {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--color-surface-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
+}

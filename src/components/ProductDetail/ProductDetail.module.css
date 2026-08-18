@@ -1,0 +1,193 @@
+.section {
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.sectionHeader {
+  margin-bottom: var(--space-3xl);
+  max-width: 680px;
+}
+
+.sectionTag {
+  display: block;
+  font-size: var(--text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.sectionTitle {
+  font-size: var(--text-h2);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.01em;
+}
+
+.sectionDescription {
+  font-size: var(--text-body-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.detailCard {
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+
+  /* Scroll-reveal state */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+:global(.is-revealed) .detailCard {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms ease var(--reveal-delay, 0ms),
+              transform 500ms ease var(--reveal-delay, 0ms),
+              border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.detailCard:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 24px var(--color-shadow);
+  transform: translateY(-4px);
+}
+
+.visualContainer {
+  margin-bottom: var(--space-lg);
+}
+
+.cardShape {
+  aspect-ratio: 16 / 10;
+  min-height: 160px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.tagPriceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.materialTag {
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.priceTag {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+}
+
+.productTitle {
+  font-size: 22px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+  line-height: 1.2;
+}
+
+.productDesc {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  flex: 1;
+}
+
+.specTable {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-md);
+  margin-bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.actionRow {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-md);
+  margin-top: auto;
+}
+
+.addToCartBtn {
+  width: 100%;
+  background-color: var(--color-surface-primary);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.addToCartBtn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+  gap: var(--space-sm);
+}
+
+.specKey {
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.specVal {
+  color: var(--color-text-primary);
+  text-align: right;
+  font-weight: 400;
+}
+
+@media (max-width: 991px) {
+  .detailGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detailCard {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .detailCard:hover {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,392 @@
+.frame {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 160px;
+  background-color: var(--color-surface-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+/* ==================== BRASS ==================== */
+.brassPullComp {
+  position: relative;
+  width: 75%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brassMountLeft,
+.brassMountRight {
+  width: 14px;
+  height: 28px;
+  background: linear-gradient(180deg, #D4AF37 0%, #8A7322 50%, #5E4E16 100%);
+  border-radius: 2px;
+  box-shadow: 0 4px 8px var(--color-shadow);
+  z-index: 1;
+}
+
+[data-theme="dark"] .brassMountLeft,
+[data-theme="dark"] .brassMountRight {
+  background: linear-gradient(180deg, #E8C85A 0%, #B89628 50%, #7A6214 100%);
+}
+
+.brassRod {
+  flex: 1;
+  height: 18px;
+  background: linear-gradient(180deg, #F3E5AB 0%, #D4AF37 35%, #8A7322 75%, #4A3E10 100%);
+  border-radius: 3px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px var(--color-shadow);
+}
+
+[data-theme="dark"] .brassRod {
+  background: linear-gradient(180deg, #FFF0B8 0%, #E8C85A 35%, #B89628 75%, #6E560F 100%);
+}
+
+.knurlingPattern {
+  width: 55%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.28),
+    rgba(0, 0, 0, 0.28) 2px,
+    transparent 2px,
+    transparent 4px
+  ),
+  repeating-linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.28),
+    rgba(0, 0, 0, 0.28) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  border-left: 1px solid rgba(0, 0, 0, 0.4);
+  border-right: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.brassGenericComp {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brassPlate {
+  width: 120px;
+  height: 70px;
+  background: linear-gradient(135deg, #F5E8BE 0%, #D4AF37 40%, #8A7322 80%, #5E4E16 100%);
+  border-radius: 6px;
+  box-shadow: 0 6px 16px var(--color-shadow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+[data-theme="dark"] .brassPlate {
+  background: linear-gradient(135deg, #FFF0B8 0%, #E8C85A 40%, #B89628 80%, #7A6214 100%);
+}
+
+.brassKnurledDetail {
+  width: 80%;
+  height: 16px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0,0,0,0.2) 0px,
+    rgba(0,0,0,0.2) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+
+.brassInlayLine {
+  width: 60%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 1px;
+}
+
+/* ==================== GLASS ==================== */
+.glassTumblerComp,
+.glassGenericComp {
+  position: relative;
+  width: 90px;
+  height: 115px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.glassBody,
+.glassVessel {
+  width: 70px;
+  height: 98px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(220, 230, 240, 0.15) 40%,
+    rgba(200, 215, 225, 0.3) 100%
+  );
+  border: 1.5px solid rgba(180, 195, 205, 0.6);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  position: relative;
+  box-shadow: 0 10px 20px var(--color-shadow);
+  backdrop-filter: blur(1px);
+}
+
+[data-theme="dark"] .glassBody,
+[data-theme="dark"] .glassVessel {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(140, 160, 180, 0.08) 40%,
+    rgba(160, 180, 200, 0.18) 100%
+  );
+  border-color: rgba(200, 215, 230, 0.4);
+}
+
+.glassRim {
+  position: absolute;
+  top: -6px;
+  left: -2px;
+  right: -2px;
+  height: 10px;
+  border: 1.5px solid rgba(180, 195, 205, 0.7);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.glassReflection {
+  position: absolute;
+  top: 12px;
+  left: 6px;
+  width: 5px;
+  height: 65px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 3px;
+}
+
+.glassBase {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: rgba(180, 195, 205, 0.4);
+  border-radius: 0 0 6px 6px;
+}
+
+/* ==================== LINEN ==================== */
+.linenComp {
+  position: relative;
+  width: 120px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.linenFoldLayer1 {
+  position: absolute;
+  width: 100px;
+  height: 75px;
+  background: #DFD5C4;
+  border-radius: 4px;
+  transform: rotate(-4deg);
+  box-shadow: 0 4px 10px var(--color-shadow);
+  border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .linenFoldLayer1 {
+  background: #382F26;
+}
+
+.linenFoldLayer2 {
+  position: absolute;
+  width: 96px;
+  height: 70px;
+  background: #EBE3D5;
+  border-radius: 4px;
+  transform: rotate(2deg);
+  box-shadow: 0 6px 14px var(--color-shadow);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] .linenFoldLayer2 {
+  background: #443A30;
+}
+
+.linenWeaveTexture {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.04) 0px,
+    rgba(0, 0, 0, 0.04) 2px,
+    transparent 2px,
+    transparent 4px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.04) 0px,
+    rgba(0, 0, 0, 0.04) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+/* ==================== WAX ==================== */
+.waxTaperComp,
+.waxGenericComp {
+  position: relative;
+  width: 60px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flame,
+.flameSmall {
+  width: 10px;
+  height: 16px;
+  background: radial-gradient(ellipse at bottom, #FFFA80 0%, #FFB300 60%, rgba(255, 87, 34, 0.8) 100%);
+  border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+  margin-bottom: 2px;
+  box-shadow: 0 0 10px rgba(255, 179, 0, 0.6);
+}
+
+.wick {
+  width: 2px;
+  height: 6px;
+  background-color: #3A2F25;
+  border-radius: 1px;
+}
+
+.waxBody {
+  width: 16px;
+  height: 90px;
+  background: linear-gradient(90deg, #E6DAC5 0%, #FAF4EB 45%, #DFD1B8 100%);
+  border-radius: 4px 4px 1px 1px;
+  position: relative;
+  box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+[data-theme="dark"] .waxBody {
+  background: linear-gradient(90deg, #C4B59E 0%, #ECE1CF 45%, #B8A88E 100%);
+}
+
+.waxPillarBlock {
+  width: 44px;
+  height: 75px;
+  background: linear-gradient(90deg, #DFD1B8 0%, #FAF4EB 40%, #D4C4A8 100%);
+  border-radius: 4px 4px 2px 2px;
+  box-shadow: 0 6px 14px var(--color-shadow);
+}
+
+[data-theme="dark"] .waxPillarBlock {
+  background: linear-gradient(90deg, #A8987E 0%, #D8CBBB 40%, #8E7E66 100%);
+}
+
+.waxHighlight {
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  width: 3px;
+  height: 75px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+}
+
+.waxHolder {
+  width: 32px;
+  height: 8px;
+  background: linear-gradient(180deg, #D4AF37 0%, #7D6E2E 100%);
+  border-radius: 3px 3px 1px 1px;
+  margin-top: 1px;
+}
+
+/* ==================== PAPER ==================== */
+.paperComp {
+  position: relative;
+  width: 110px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paperSheetBack {
+  position: absolute;
+  width: 82px;
+  height: 104px;
+  background: #E8E0D2;
+  border-radius: 3px;
+  transform: rotate(-6deg);
+  box-shadow: 0 4px 10px var(--color-shadow);
+  border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .paperSheetBack {
+  background: #3A3229;
+}
+
+.paperSheetFront {
+  position: absolute;
+  width: 80px;
+  height: 100px;
+  background: #FAF6EF;
+  border-radius: 3px;
+  transform: rotate(2deg);
+  box-shadow: 0 6px 14px var(--color-shadow);
+  border: 1px solid var(--color-border);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+[data-theme="dark"] .paperSheetFront {
+  background: #483E34;
+}
+
+.paperGridLines {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(125, 110, 46, 0.15) 0px,
+    rgba(125, 110, 46, 0.15) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+}
+
+.placeholderDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}

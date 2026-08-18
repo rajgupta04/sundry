@@ -1,0 +1,16 @@
+/* Font fallback declarations if Google Fonts or local font fails */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Instrument Serif'), local('InstrumentSerif-Regular');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: local('Inter'), local('Inter-Regular');
+}

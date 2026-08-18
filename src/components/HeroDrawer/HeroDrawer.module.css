@@ -1,0 +1,558 @@
+.heroSection {
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-3xl);
+  position: relative;
+}
+
+.cabinetLabelContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+  padding: 0 var(--space-xs);
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.cabinetCabinetTag {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  font-weight: 600;
+}
+
+.cabinetStateBadge {
+  font-size: var(--text-label);
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* --- 3D Viewport with Perspective --- */
+.drawerViewport {
+  perspective: 1000px;
+  perspective-origin: center 38%;
+  width: 100%;
+  position: relative;
+}
+
+/* --- 3D Assembly Context --- */
+.drawerAssembly {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-md);
+  min-height: 480px;
+  height: auto;
+  transition: min-height var(--transition-slow);
+}
+
+.drawerAssembly.assemblyOpen {
+  min-height: auto;
+}
+
+/* --- Brass Handle on Drawer Face --- */
+.brassHandleBar {
+  width: 90px;
+  height: 6px;
+  background: linear-gradient(90deg, #8A7322 0%, #D4AF37 50%, #8A7322 100%);
+  border-radius: 3px;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[data-theme="dark"] .brassHandleBar {
+  background: linear-gradient(90deg, #B89628 0%, #E8C85A 50%, #B89628 100%);
+}
+
+.brassHandlePull {
+  width: 44px;
+  height: 12px;
+  border: 2px solid #8A7322;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+[data-theme="dark"] .brassHandlePull {
+  border-color: #E8C85A;
+}
+
+/* --- Drawer Face (The front panel that hinges forward/down) --- */
+.drawerFace {
+  position: relative;
+  z-index: 2;
+  transform-origin: bottom center;
+  transform: rotateX(0deg);
+  transition: transform 700ms cubic-bezier(0.22, 1.15, 0.50, 1.00),
+              opacity 450ms ease,
+              visibility 700ms ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-3xl) var(--space-lg);
+  text-align: center;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 24px var(--color-shadow);
+}
+
+.drawerFace.faceOpen {
+  transform: rotateX(-83deg);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.headline {
+  font-size: var(--text-display);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.subline {
+  font-size: var(--text-body);
+  color: var(--color-text-secondary);
+  max-width: 580px;
+  margin-bottom: var(--space-xl);
+  line-height: 1.6;
+}
+
+.ctaGroup {
+  margin-bottom: var(--space-2xl);
+  width: 100%;
+  max-width: 320px;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px var(--color-shadow);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.primaryCta:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--color-shadow-heavy);
+}
+
+.ctaArrow {
+  font-size: 16px;
+  transition: transform var(--transition-fast);
+}
+
+.primaryCta:hover .ctaArrow {
+  transform: translateY(3px);
+}
+
+.drawerFaceFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-size: var(--text-label);
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.specDot {
+  color: var(--color-accent);
+}
+
+/* --- Drawer Interior (Revealed content) --- */
+.drawerInterior {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(24px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 500ms ease 250ms,
+              transform 500ms ease 250ms,
+              visibility 500ms ease 250ms;
+
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-2xl) var(--space-xl) var(--space-3xl);
+  box-shadow: 0 12px 32px var(--color-shadow-heavy);
+  height: auto;
+  box-sizing: border-box;
+}
+
+.drawerInterior.interiorOpen {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+  height: auto;
+}
+
+.interiorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-xl);
+  gap: var(--space-md);
+}
+
+.interiorTag {
+  display: block;
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.interiorHeading {
+  font-size: var(--text-h3);
+  color: var(--color-text-primary);
+  line-height: 1.35;
+}
+
+.interiorActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+.browseAllLink {
+  font-size: var(--text-small);
+  color: var(--color-accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-accent);
+  background-color: var(--color-surface-primary);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.browseAllLink:hover {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+.closeDrawerBtn {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-primary);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.closeDrawerBtn:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-accent);
+}
+
+.goodsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  align-items: stretch;
+}
+
+.goodItem {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface-primary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  padding: var(--space-md);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.goodItem:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.shapeWrapper {
+  margin-bottom: var(--space-md);
+  max-height: 170px;
+  border-radius: var(--radius-sm);
+}
+
+.shapeWrapper div[class*="frame"] {
+  min-height: 140px !important;
+  max-height: 170px !important;
+  aspect-ratio: 16 / 10 !important;
+}
+
+.goodMeta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.goodHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.materialTag {
+  font-size: var(--text-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.goodPrice {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-accent);
+  font-family: var(--font-body);
+}
+
+.goodName {
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.goodDesc {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  flex: 1;
+}
+
+.goodActionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-sm);
+  gap: var(--space-xs);
+  margin-top: auto;
+}
+
+.specsText {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 140px;
+  line-height: 1.4;
+}
+
+.addToTrayBtn {
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.addToTrayBtn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+/* --- Drawer Shadow --- */
+.drawerShadow {
+  position: absolute;
+  bottom: -6px;
+  left: 10%;
+  right: 10%;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-shadow);
+  filter: blur(8px);
+  opacity: 0.5;
+  transition: all 700ms ease;
+  pointer-events: none;
+}
+
+.drawerShadow.shadowOpen {
+  bottom: -18px;
+  left: 4%;
+  right: 4%;
+  height: 36px;
+  filter: blur(20px);
+  opacity: 0.8;
+  background: var(--color-shadow-heavy);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991px) {
+  .goodsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 767px) {
+  .drawerFace {
+    padding: var(--space-2xl) var(--space-md);
+    min-height: 400px;
+  }
+
+  .subline {
+    font-size: 14px;
+  }
+
+  .drawerInterior {
+    padding: var(--space-lg) var(--space-md) var(--space-2xl);
+  }
+
+  .interiorHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .interiorActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .browseAllLink,
+  .closeDrawerBtn {
+    flex: 1;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding-top: var(--space-sm);
+  }
+
+  .drawerFace {
+    padding: var(--space-xl) var(--space-sm);
+    min-height: 360px;
+  }
+
+  .brassHandleBar {
+    width: 70px;
+    margin-bottom: var(--space-md);
+  }
+
+  .drawerFaceFooter {
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  .drawerInterior {
+    padding: var(--space-md) var(--space-sm) var(--space-xl);
+  }
+
+  .goodItem {
+    padding: 10px;
+  }
+
+  .shapeWrapper {
+    max-height: 140px;
+  }
+
+  .shapeWrapper div[class*="frame"] {
+    min-height: 120px !important;
+    max-height: 140px !important;
+  }
+}
+
+/* --- Reduced Motion Fallback --- */
+@media (prefers-reduced-motion: reduce) {
+  .drawerFace {
+    transition: opacity 400ms ease, visibility 400ms ease !important;
+    transform: none !important;
+  }
+
+  .drawerFace.faceOpen {
+    transform: none !important;
+    opacity: 0 !important;
+  }
+
+  .drawerInterior {
+    transition: opacity 400ms ease 100ms, visibility 400ms ease 100ms !important;
+    transform: none !important;
+  }
+
+  .drawerInterior.interiorOpen {
+    transform: none !important;
+  }
+
+  .primaryCta:hover {
+    transform: none !important;
+  }
+
+  .goodItem:hover {
+    transform: none !important;
+  }
+}
